@@ -9,7 +9,6 @@
         "start:prod": "node server.js",
         "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
         "client": "npm start --prefix client",
-        "install": "npm install --prefix client",
         "build": "npm run build --prefix client",
         "heroku-postbuild": "npm run build"
     },
