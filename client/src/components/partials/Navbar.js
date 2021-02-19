@@ -1,16 +1,36 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Navbar = props => {
+const Navbar = (props) => {
   return (
     <div className="navbar-fixed">
-      <nav className="z-depth-0">
-        <div className="nav-wrapper white">
-          <Link to="/" className="col s5 brand-logo center black-text" style={{ fontFamily: 'monospace' }}>
-            <i className="material-icons">code</i> MERN
-          </Link>
+      <nav>
+        <div class="nav-wrapper blue-grey darken-1">
+          <a href="/" class="brand-logo">
+            DnD Project
+          </a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <Link to="/">Profile</Link>
+            </li>
+            <li>
+              <Link to="/randomizer">Rondomize</Link>
+            </li>
+          </ul>
         </div>
       </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+        <li>
+          <Link to="/">Profile</Link>
+        </li>
+        <li>
+          <Link to="/randomizer">Randomize</Link>
+        </li>
+      </ul>
     </div>
   );
 };
