@@ -7,6 +7,7 @@ function Randomizer() {
       <Card>
         <div className="nameDiv">Name: </div>
         <div className="raceDiv">Race: </div>
+        <div className="classDiv">Class: </div>
         <div className="backgroundDiv">Background: </div>
         <div className="idealsDiv">Ideals: </div>
         <div className="bondsDiv">Bonds: </div>
