@@ -1,8 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 
 const userController = {
-  getUser: function() {
+  getUser: function () {
     return axios.get(`/api/users/me`);
+  },
+  saveCharacter: function (characterData) {
+    return axios.post(`/api/characters`, characterData);
   },
 };
 
