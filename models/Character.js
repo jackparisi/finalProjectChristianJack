@@ -10,19 +10,23 @@ const CharacterSchema = new Schema({
     type: String,
     // required: true,
   },
+  newClass: {
+    type: String,
+    // required: true,
+  },
   background: {
     type: String,
     // required: true,
   },
-  ideals: {
+  ideal: {
     type: String,
     // required: true,
   },
-  flaws: {
+  flaw: {
     type: String,
     // required: true,
   },
-  bonds: {
+  bond: {
     type: String,
     // required: true,
   },
