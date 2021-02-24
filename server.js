@@ -44,7 +44,7 @@ app.use("/api/auth", authRoutes);
 
 // For all authenticated routes, make sure to use this
 app.use("/api/users", requiresAuth, usersRoutes);
-app.use("/api/characters", charactersRoutes);
+app.use("/api/characters", requiresAuth, charactersRoutes);
 
 // For production, serve compiled React app in client build directory.
 if (process.env.NODE_ENV === "production") {

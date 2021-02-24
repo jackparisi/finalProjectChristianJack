@@ -40,6 +40,12 @@ function Randomizer() {
     console.log("saveCharcter");
     API.saveCharacter({
       name: name,
+      race: race,
+      newClass: newClass,
+      background: background,
+      ideal: ideal,
+      bond: bond,
+      flaw: flaw,
     }).then(M.toast({ html: "Character Saved!" }));
   };
 

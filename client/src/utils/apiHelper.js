@@ -7,6 +7,9 @@ const userController = {
   saveCharacter: function (characterData) {
     return axios.post(`/api/characters`, characterData);
   },
+  getCharacters: function () {
+    return axios.get("/api/characters");
+  },
 };
 
 export default userController;
