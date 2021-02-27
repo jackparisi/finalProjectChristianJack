@@ -35,12 +35,10 @@ const Navbar = (props) => {
                                     <Link to="/randomizer">Randomize</Link>
                                 </li>
                                 <li>
-                                    <Link to="/spellSearch">Search Spells</Link>
+                                    <Link to="/spellSearch">Spell Book</Link>
                                 </li>
                                 <li>
-                                    <Link to="/monsterSearch">
-                                        Search Monsters
-                                    </Link>
+                                    <Link to="/monsterSearch">Bestiary</Link>
                                 </li>
                                 <li>
                                     <a onClick={logout}>Logout</a>
