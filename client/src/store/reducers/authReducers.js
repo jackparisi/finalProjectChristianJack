@@ -1,5 +1,5 @@
-import isEmpty from 'is-empty';
-import { SET_CURRENT_USER, USER_LOADING } from '../actions/types';
+import isEmpty from "is-empty";
+import { SET_CURRENT_USER, USER_LOADING } from "../actions/types";
 
 export const initialState = {
   isAuthenticated: false,
@@ -8,7 +8,7 @@ export const initialState = {
   loading: false,
 };
 
-export const reducer = function(state = initialState, action) {
+export const reducer = function (state = initialState, action) {
   switch (action.type) {
     case SET_CURRENT_USER:
       return {
