@@ -18,6 +18,8 @@ import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import Dashboard from "./components/pages/Dashboard";
+import SpellSearch from "./components/pages/Search";
+import MonsterSearch from "./components/pages/Monsters";
 
 const App = () => {
     const { dispatch } = useContext(Store);
@@ -58,6 +60,8 @@ const App = () => {
                 {/* <Route exact path="/" component={Landing} /> */}
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/spellSearch" component={SpellSearch} />
+                <Route exact path="/monsterSearch" component={MonsterSearch} />
                 <Switch>
                     <PrivateRoute
                         exact
