@@ -1,26 +1,24 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-const validateRegisterInput = require('../validation/register');
-const validateLoginInput = require('../validation/login');
+const validateRegisterInput = require("../validation/register");
+const validateLoginInput = require("../validation/login");
 
-const User = require('../models/User');
+const User = require("../models/User");
 
-router.post('/register', (req, res) => {
+router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
-  if (!isValid)
-    return res.status(400).json(errors);
+  if (!isValid) return res.status(400).json(errors);
 
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
 
-  User.findOne({ email }).then(user => {
-    if (user)
-      return res.status(400).json({ email: 'Email already exists' });
+  User.findOne({ email }).then((user) => {
+    if (user) return res.status(400).json({ email: "Email already exists" });
 
     const newUser = new User({
       name,
@@ -33,43 +31,52 @@ router.post('/register', (req, res) => {
         if (err) throw err;
 
         newUser.password = hash;
-        newUser.save().then(user => res.json(user)).catch(err => console.log(err));
+        newUser
+          .save()
+          .then((user) => res.json(user))
+          .catch((err) => console.log(err));
       });
     });
   });
 });
 
-router.post('/login', (req, res) => {
+router.post("/login", (req, res) => {
+  // console.log(req.body);
   const { errors, isValid } = validateLoginInput(req.body);
-
-  if (!isValid)
-    return res.status(400).json(errors);
+  // console.log("Logging in");
+  if (!isValid) return res.status(400).json(errors);
 
   const email = req.body.email;
   const password = req.body.password;
 
-  User.findOne({ email }).then(user => {
+  User.findOne({ email }).then((user) => {
     if (!user)
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: "Invalid email or password" });
 
-    bcrypt.compare(password, user.password).then(isMatch => {
+    bcrypt.compare(password, user.password).then((isMatch) => {
       if (!isMatch)
-        return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(401).json({ message: "Invalid email or password" });
 
       const payload = {
         id: user.id,
         name: user.name,
       };
 
-      jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 31556926 }, (err, token) => {
-        if (err)
-          return res.status(400).json({ tokenerror: 'There was a problem updating your security token' });
-
-        res.json({
-          success: true,
-          token: `Bearer ${token}`,
-        });
-      });
+      jwt.sign(
+        payload,
+        process.env.JWT_SECRET,
+        { expiresIn: 31556926 },
+        (err, token) => {
+          if (err)
+            return res.status(400).json({
+              tokenerror: "There was a problem updating your security token",
+            });
+          res.json({
+            success: true,
+            token: `Bearer ${token}`,
+          });
+        }
+      );
     });
   });
 });
