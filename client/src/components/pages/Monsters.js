@@ -20,7 +20,7 @@ function MonsterSearch() {
     };
 
     return (
-        <div>
+        <div class="container">
             <Row>
                 <Col size="md-3">
                     <List>
