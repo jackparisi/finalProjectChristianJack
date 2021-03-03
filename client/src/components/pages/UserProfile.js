@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Card, Row, Col } from "react-materialize";
+import {
+  Card,
+  Row,
+  Col,
+  Collapsible,
+  CollapsibleItem,
+  Icon,
+} from "react-materialize";
 import API from "../../utils/apiHelper";
 import { List, ListItem } from "../../utils/List/List";
+import M from "materialize-css/dist/js/materialize.min.js";
 
 function UserProfile() {
   const [characters, setCharacters] = useState([]);
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     loadCharacters();
+    loadUser();
   }, []);
 
   function loadCharacters() {
@@ -15,20 +25,57 @@ function UserProfile() {
       .then((res) => setCharacters(res.data))
       .catch((err) => console.log(err));
   }
+
+  function loadUser() {
+    API.getUser()
+      .then((res) => setUser(res.data))
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className="container">
-      <Card>User Profile</Card>
-      <Card>
+      <Card className="blue-grey darken-1 white-text">
+        <b>{user.name}'s Profile</b>
+      </Card>
+      <Card className="blue-grey darken-1 white-text">
         <b>Characters</b>
-        <List>
+        <Collapsible accordion>
           {characters.map((character) => (
-            <ListItem key={character.id}>
+            <CollapsibleItem
+              key={character.id}
+              expanded={false}
+              header={character.name}
+              icon={<Icon>person</Icon>}
+              node="div"
+              className="blue-grey lighten-5 black-text"
+            >
               <p>
-                <b>{character.name}</b>
+                <b>Race: </b>
+                {character.race}
               </p>
-            </ListItem>
+              <p>
+                <b>Class: </b>
+                {character.newClass}
+              </p>
+              <p>
+                <b>Background: </b>
+                {character.background}
+              </p>
+              <p>
+                <b>Ideal: </b>
+                {character.ideal}
+              </p>
+              <p>
+                <b>Bond: </b>
+                {character.bond}
+              </p>
+              <p>
+                <b>Flaw: </b>
+                {character.flaw}
+              </p>
+            </CollapsibleItem>
           ))}
-        </List>
+        </Collapsible>
       </Card>
     </div>
   );

@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Store } from "../../store";
 import { logoutUser } from "../../store/actions/authActions";
 
 const Navbar = (props) => {
-    const { state, dispatch } = useContext(Store);
-    const user = state.auth.user || false;
-    const logout = (e) => {
-        e.preventDefault();
-        logoutUser(props.history)(dispatch);
-    };
+
+  const { state, dispatch } = useContext(Store);
+  const user = state.auth.user || false;
+  const history = useHistory();
+  const logout = (e) => {
+    e.preventDefault();
+    logoutUser(history)(dispatch);
+  };
+
 
     return (
         <div className="navbar-fixed">

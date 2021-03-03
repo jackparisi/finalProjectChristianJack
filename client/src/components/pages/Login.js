@@ -1,21 +1,21 @@
-import React, { useEffect, useRef, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { Store } from '../../store';
-import { loginUser, setErrors } from '../../store/actions/authActions';
-import classnames from 'classnames';
+import React, { useEffect, useRef, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { Store } from "../../store";
+import { loginUser, setErrors } from "../../store/actions/authActions";
+import classnames from "classnames";
 
-const Login = props => {
+const Login = (props) => {
   const { state, dispatch } = useContext(Store);
   const errors = state.error;
   const emailRef = useRef();
   const passwordRef = useRef();
+  const history = useHistory();
 
   useEffect(() => {
-    if (state.auth.isAuthenticated)
-      props.history.push('/dashboard');
-  }, [ state, props ]);
+    if (state.auth.isAuthenticated) history.push("/dashboard");
+  }, [state, props]);
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     dispatch(setErrors({ response: { data: {} } }));
@@ -25,17 +25,18 @@ const Login = props => {
       password: passwordRef.current.value,
     };
 
-    loginUser(userData, props.history)(dispatch);
+    loginUser(userData, history)(dispatch);
   };
 
   return (
     <div className="container">
-      <div className="row" style={{ marginTop: '4rem' }}>
+      <div className="row" style={{ marginTop: "4rem" }}>
         <div className="col s8 offset-s2">
           <Link to="/" className="btn-flat waves-effect">
-            <i className="material-icons left">keyboard_backspace</i> Back to home
+            <i className="material-icons left">keyboard_backspace</i> Back to
+            home
           </Link>
-          <div className="col s12" style={{ paddingLeft: '11.250px' }}>
+          <div className="col s12" style={{ paddingLeft: "11.250px" }}>
             <h4>
               <b>Login</b> below
             </h4>
@@ -45,8 +46,13 @@ const Login = props => {
           </div>
           <form noValidate onSubmit={onSubmit}>
             <div className="input-field col s12">
-              <input ref={emailRef} error={errors.incorrect} name="email" type="email"
-                     className={classnames('', { invalid: errors.incorrect })} />
+              <input
+                ref={emailRef}
+                error={errors.incorrect}
+                name="email"
+                type="email"
+                className={classnames("", { invalid: errors.incorrect })}
+              />
 
               <label htmlFor="email">Email</label>
 
@@ -54,8 +60,13 @@ const Login = props => {
             </div>
 
             <div className="input-field col s12">
-              <input ref={passwordRef} error={errors.incorrect} name="password" type="password"
-                     className={classnames('', { invalid: errors.incorrect })} />
+              <input
+                ref={passwordRef}
+                error={errors.incorrect}
+                name="password"
+                type="password"
+                className={classnames("", { invalid: errors.incorrect })}
+              />
               <label htmlFor="password">Password</label>
             </div>
 
@@ -63,16 +74,17 @@ const Login = props => {
               <span className="red-text">{errors.message}</span>
             </div>
 
-            <div className="col s12" style={{ paddingLeft: '11.250px' }}>
+            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <button
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 style={{
-                  width: '150px',
-                  borderRadius: '3px',
-                  letterSpacing: '1.5px',
-                  marginTop: '1rem',
+                  width: "150px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem",
                 }}
-                type="submit">
+                type="submit"
+              >
                 Login
               </button>
             </div>
