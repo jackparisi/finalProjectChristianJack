@@ -21,7 +21,7 @@ function MonsterSearch() {
     <div>
       <Row>
         <Col size="md-3">
-          <List className="list">
+          <List>
             {monsters.map((monster) => (
               <ListItem key={monster.id}>
                 <a onClick={(e) => getMonsterInfo(e, monster.index)}>

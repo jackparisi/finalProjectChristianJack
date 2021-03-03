@@ -19,7 +19,7 @@ function Search() {
         });
     };
     return (
-        <div>
+        <div class="container">
             <Row>
                 <Col size="md-3">
                     <List>
@@ -36,14 +36,60 @@ function Search() {
                         ))}
                     </List>
                 </Col>
-                <Col size="md-9 offset-3">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text">
-                            <span class="card-title">{spellInfo.name}</span>
-                            <p>{spellInfo.desc}</p>
-                        </div>
-                    </div>
-                </Col>
+                {spellInfo.name ? (
+                    <>
+                        <Col size="md-9 offset-3">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">
+                                        {spellInfo.name}
+                                    </span>
+                                    <p>{spellInfo.desc}</p>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col size="md-9 offset-3">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">Spell Info</span>
+                                    <ul>
+                                        <li>Range: {spellInfo.range}</li>
+                                        <li>Ritual: {spellInfo.ritual}</li>
+                                        <li>Duration: {spellInfo.duration}</li>
+                                        <li>
+                                            Casting Time:{" "}
+                                            {spellInfo.casting_time}
+                                        </li>
+                                        <li>Level: {spellInfo.level}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col size="md-9 offset-3">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">More</span>
+                                    <ul>
+                                        <li>School: {spellInfo.school.name}</li>
+                                        {spellInfo.classes.map(({ name }) => {
+                                            return <li>Class: {name}</li>;
+                                        })}
+
+                                        {spellInfo.subclasses.map(
+                                            ({ name }) => {
+                                                return (
+                                                    <li>Subclass: {name}</li>
+                                                );
+                                            }
+                                        )}
+                                    </ul>
+                                </div>
+                            </div>
+                        </Col>
+                    </>
+                ) : (
+                    ""
+                )}
             </Row>
         </div>
     );
