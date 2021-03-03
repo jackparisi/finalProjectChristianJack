@@ -32,20 +32,20 @@ const Login = (props) => {
     <div className="container">
       <div className="row" style={{ marginTop: "4rem" }}>
         <div className="col s8 offset-s2">
-          <Link to="/" className="btn-flat waves-effect">
-            <i className="material-icons left">keyboard_backspace</i> Back to
-            home
+          <Link to="/" className="white-text btn-flat waves-effect">
+            <i className="white-text material-icons left">keyboard_backspace</i>{" "}
+            Back to home
           </Link>
           <div className="col s12" style={{ paddingLeft: "11.250px" }}>
             <h4>
               <b>Login</b> below
             </h4>
-            <p className="grey-text text-darken-1">
+            <p className="white-text">
               Don't have an account? <Link to="/register">Register</Link>
             </p>
           </div>
           <form noValidate onSubmit={onSubmit}>
-            <div className="input-field col s12">
+            <div className="white-text input-field col s12">
               <input
                 ref={emailRef}
                 error={errors.incorrect}

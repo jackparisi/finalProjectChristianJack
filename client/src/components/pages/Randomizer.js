@@ -51,7 +51,7 @@ function Randomizer() {
 
   return (
     <div className="container">
-      <Card className="blue-grey darken-1">
+      <Card className="glass divHead ">
         <div className="white-text" id="nameDiv">
           <b>Name:</b> {name}{" "}
         </div>

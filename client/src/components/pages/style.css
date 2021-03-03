@@ -1,0 +1,23 @@
+body {
+  padding: 0px;
+}
+
+.glass {
+  background: linear-gradient(
+    to right bottom,
+    rgba(84, 110, 122, 0.95),
+    rgba(84, 110, 122, 0.9)
+  );
+}
+
+.glassCharacter {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.95)
+  );
+}
+
+.divHead {
+  margin-top: 100px;
+}
