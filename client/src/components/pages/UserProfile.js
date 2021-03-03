@@ -8,8 +8,9 @@ import {
   Icon,
 } from "react-materialize";
 import API from "../../utils/apiHelper";
-import { List, ListItem } from "../../utils/List/List";
-import M from "materialize-css/dist/js/materialize.min.js";
+import "./style.css";
+// import { List, ListItem } from "../../../../utils/List/List";
+// import M from "materialize-css/dist/js/materialize.min.js";
 
 function UserProfile() {
   const [characters, setCharacters] = useState([]);
@@ -34,11 +35,15 @@ function UserProfile() {
 
   return (
     <div className="container">
-      <Card className="blue-grey darken-1 white-text">
-        <b>{user.name}'s Profile</b>
+      <Card className="glass white-text divHead center-align">
+        <h3>
+          <b>{user.name}'s Profile</b>
+        </h3>
       </Card>
-      <Card className="blue-grey darken-1 white-text">
-        <b>Characters</b>
+      <Card className="glass white-text">
+        <h5>
+          <b>Characters</b>
+        </h5>
         <Collapsible accordion>
           {characters.map((character) => (
             <CollapsibleItem
@@ -47,7 +52,7 @@ function UserProfile() {
               header={character.name}
               icon={<Icon>person</Icon>}
               node="div"
-              className="blue-grey lighten-5 black-text"
+              className=" blue-grey lighten-4 black-text"
             >
               <p>
                 <b>Race: </b>
