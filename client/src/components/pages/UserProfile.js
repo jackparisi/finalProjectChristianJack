@@ -8,6 +8,7 @@ import {
   Icon,
 } from "react-materialize";
 import API from "../../utils/apiHelper";
+import DeleteBtn from "../partials/DeleteBtn";
 import "./style.css";
 // import { List, ListItem } from "../../../../utils/List/List";
 // import M from "materialize-css/dist/js/materialize.min.js";
@@ -33,6 +34,12 @@ function UserProfile() {
       .catch((err) => console.log(err));
   }
 
+  function deleteCharacter(id) {
+    API.deleteBook(id)
+      .then((res) => loadCharacters(res.data))
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className="container">
       <Card className="glass white-text divHead center-align">
@@ -49,7 +56,10 @@ function UserProfile() {
             <CollapsibleItem
               key={character.id}
               expanded={false}
-              header={character.name}
+              header={`${character.name}
+                ${(
+                  <DeleteBtn onClick={() => deleteCharacter(character._id)} />
+                )}`}
               icon={<Icon>person</Icon>}
               node="div"
               className=" blue-grey lighten-4 black-text"
