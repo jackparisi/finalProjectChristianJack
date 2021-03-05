@@ -35,7 +35,7 @@ function UserProfile() {
   }
 
   function deleteCharacter(id) {
-    API.deleteBook(id)
+    API.deleteCharacter(id)
       .then((res) => loadCharacters(res.data))
       .catch((err) => console.log(err));
   }
@@ -56,14 +56,12 @@ function UserProfile() {
             <CollapsibleItem
               key={character.id}
               expanded={false}
-              header={`${character.name}
-                ${(
-                  <DeleteBtn onClick={() => deleteCharacter(character._id)} />
-                )}`}
+              header={character.name}
               icon={<Icon>person</Icon>}
               node="div"
               className=" blue-grey lighten-4 black-text"
             >
+              <DeleteBtn onClick={() => deleteCharacter(character._id)} />
               <p>
                 <b>Race: </b>
                 {character.race}

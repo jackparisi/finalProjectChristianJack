@@ -5,8 +5,8 @@ body {
 .glass {
   background: linear-gradient(
     to right bottom,
-    rgba(207, 182, 138, 0.95),
-    rgba(61, 52, 37, 0.9)
+    rgba(198, 43, 41, 0.95),
+    rgba(26, 6, 6, 0.9)
   );
 }
 

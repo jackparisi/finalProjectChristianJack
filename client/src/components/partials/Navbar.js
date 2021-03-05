@@ -16,8 +16,8 @@ const Navbar = (props) => {
   return (
     <div className="navbar-fixed">
       <nav>
-        <div className="glass nav-wrapper blue-grey darken-1">
-          <a href="/" className="brand-logo">
+        <div className="glass nav-wrapper">
+          <a href="/" className="brand-logo logo">
             <img src="./assets/rpgenerator.png" className="logo"></img>
           </a>
           <a href="#" data-target="mobile-demo" className="sidenav-trigger">

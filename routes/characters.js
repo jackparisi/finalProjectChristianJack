@@ -21,5 +21,10 @@ router.get("/", (req, res) => {
     .then((user) => res.json(user.characters))
     .catch((err) => res.status(422).json(err));
 });
-
+router.delete("/:id", (req, res) => {
+  Character.findById({ _id: req.params.id })
+    .then((dbModel) => dbModel.remove())
+    .then((dbModel) => res.json(dbModel))
+    .catch((err) => res.status(422).json(err));
+});
 module.exports = router;
