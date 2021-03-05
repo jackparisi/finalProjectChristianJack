@@ -6,6 +6,7 @@
   width: 100vmax;
   height: 100vh;
   position: fixed;
+  z-index: -1;
 }
 #coins {
   width: 500px;
@@ -13,6 +14,7 @@
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: -1;
 }
 #dagger {
   width: 250px;
@@ -20,4 +22,17 @@
   position: fixed;
   top: 35px;
   right: 0;
+  z-index: -1;
+}
+
+.sidenav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  height: 120vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  display: none;
 }
