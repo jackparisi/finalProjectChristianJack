@@ -54,8 +54,8 @@ const App = () => {
   return (
     <Router>
       <img src="./assets/wood.jpg" id="wood"></img>
-      <img src="./assets/coins-test.png" id="coins"></img>
-      <img src="./assets/dagger-test.png" id="dagger"></img>
+      <img src="./assets/coins.png" id="coins"></img>
+      <img src="./assets/dagger.png" id="dagger"></img>
       <div className="App">
         <Navbar />
         <Route exact path="/" component={UserProfile} />

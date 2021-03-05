@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Store } from "../../store";
 import { logoutUser } from "../../store/actions/authActions";
+import "./style.css";
 
 const Navbar = (props) => {
   const { state, dispatch } = useContext(Store);
@@ -15,14 +16,14 @@ const Navbar = (props) => {
   return (
     <div className="navbar-fixed">
       <nav>
-        <div class="glass nav-wrapper">
-          <a href="/" class="brand-logo">
-            DnD Project
+        <div className="glass nav-wrapper blue-grey darken-1">
+          <a href="/" className="brand-logo">
+            <img src="./assets/rpgenerator.png" className="logo"></img>
           </a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-            <i class="material-icons">menu</i>
+          <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+            <i className="material-icons">menu</i>
           </a>
-          <ul class="right hide-on-med-and-down">
+          <ul className="right hide-on-med-and-down">
             {user ? (
               <>
                 <li>
@@ -55,7 +56,7 @@ const Navbar = (props) => {
         </div>
       </nav>
 
-      <ul class="sidenav" id="mobile-demo">
+      <ul className="sidenav" id="mobile-demo">
         <li>
           <Link to="/">Profile</Link>
         </li>
