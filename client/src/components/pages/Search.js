@@ -66,7 +66,7 @@ function Search() {
                             </div>
                         </Col>
                         <Col size="md-9 offset-3">
-                            <div class="card blue-grey darken-1">
+                            <div class="card glass darken-1">
                                 <div class="card-content white-text">
                                     <span class="card-title">More</span>
                                     <ul>
