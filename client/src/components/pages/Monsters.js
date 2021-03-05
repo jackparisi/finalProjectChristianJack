@@ -23,24 +23,26 @@ function MonsterSearch() {
         <div class="container">
             <Row>
                 <Col size="md-3">
-                    <List>
-                        {monsters.map((monster) => (
-                            <ListItem key={monster.id}>
-                                <a
-                                    onClick={(e) =>
-                                        getMonsterInfo(e, monster.index)
-                                    }
-                                >
-                                    {monster.name}
-                                </a>
-                            </ListItem>
-                        ))}
-                    </List>
+                    <div class="spellList">
+                        <List>
+                            {monsters.map((monster) => (
+                                <ListItem key={monster.id}>
+                                    <a
+                                        onClick={(e) =>
+                                            getMonsterInfo(e, monster.index)
+                                        }
+                                    >
+                                        {monster.name}
+                                    </a>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </div>
                 </Col>
                 {monsterInfo.name ? (
                     <>
                         <Col size="md-9">
-                            <div class="card glass darken-1">
+                            <div class="card glass spellCardOne darken-1">
                                 <div class="card-content white-text">
                                     <span class="card-title">
                                         {monsterInfo.name}
@@ -79,7 +81,7 @@ function MonsterSearch() {
                             </div>
                         </Col>
                         <Col>
-                            <div class="card blue-grey darken-1">
+                            <div class="card glass spellCardTwo darken-1">
                                 <div class="card-content white-text">
                                     <span class="card-title">
                                         Monster Stats
@@ -109,7 +111,7 @@ function MonsterSearch() {
                             </div>
                         </Col>
                         <Col>
-                            <div class="card blue-grey darken-1">
+                            <div class="card glass spellCardTwo darken-1">
                                 <div class="card-content white-text">
                                     <span class="card-title">
                                         Special Abilities

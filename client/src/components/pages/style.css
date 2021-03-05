@@ -1,34 +1,57 @@
 body {
-  padding: 0px;
+    padding: 0px;
 }
 
 .glass {
-  background: linear-gradient(
-    to right bottom,
-    rgba(198, 43, 41, 0.95),
-    rgba(26, 6, 6, 0.9)
-  );
+    background: linear-gradient(
+        to right bottom,
+        rgba(198, 43, 41, 0.95),
+        rgba(26, 6, 6, 0.9)
+    );
 }
 
 .divHead {
-  margin-top: 100px;
+    margin-top: 100px;
 }
 
 .delete-btn {
-  float: right;
-  color: #e74944;
+    float: right;
+    color: #e74944;
 }
 
 .bookImage {
-  height: auto;
-  width: 150px;
+    height: auto;
+    width: 150px;
 }
 
 .text-wrap {
-  word-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .save-btn {
-  float: right;
-  color: #e74944;
+    float: right;
+    color: #e74944;
+}
+
+.spellCardOne {
+    width: 720px;
+}
+
+.spellCardTwo {
+    width: 360px;
+}
+
+.spellList {
+    background: rgb(252, 252, 252);
+    color: black;
+}
+
+.card-title {
+    text-align: center;
+    font-size: larger;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.card-content {
+    text-align: center;
 }

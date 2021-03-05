@@ -22,24 +22,26 @@ function Search() {
         <div class="container">
             <Row>
                 <Col size="md-3">
-                    <List>
-                        {spells.map((spell) => (
-                            <ListItem key={spell.id}>
-                                <a
-                                    onClick={(e) =>
-                                        getSpellInfo(e, spell.index)
-                                    }
-                                >
-                                    {spell.name}
-                                </a>
-                            </ListItem>
-                        ))}
-                    </List>
+                    <div class="spellList">
+                        <List className="spellList">
+                            {spells.map((spell) => (
+                                <ListItem key={spell.id}>
+                                    <a
+                                        onClick={(e) =>
+                                            getSpellInfo(e, spell.index)
+                                        }
+                                    >
+                                        {spell.name}
+                                    </a>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </div>
                 </Col>
                 {spellInfo.name ? (
                     <>
                         <Col size="md-9 offset-3">
-                            <div class="card blue-grey darken-1">
+                            <div class="card glass spellCardOne darken-1">
                                 <div class="card-content white-text">
                                     <span class="card-title">
                                         {spellInfo.name}
@@ -49,7 +51,7 @@ function Search() {
                             </div>
                         </Col>
                         <Col size="md-9 offset-3">
-                            <div class="card blue-grey darken-1">
+                            <div class="card glass spellCardTwo darken-1">
                                 <div class="card-content white-text">
                                     <span class="card-title">Spell Info</span>
                                     <ul>
@@ -66,7 +68,7 @@ function Search() {
                             </div>
                         </Col>
                         <Col size="md-9 offset-3">
-                            <div class="card glass darken-1">
+                            <div class="card glass spellCardTwo darken-1">
                                 <div class="card-content white-text">
                                     <span class="card-title">More</span>
                                     <ul>
