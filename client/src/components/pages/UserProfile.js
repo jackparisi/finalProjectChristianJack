@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Card,
   Row,
@@ -10,12 +10,16 @@ import {
 import API from "../../utils/apiHelper";
 import DeleteBtn from "../partials/DeleteBtn";
 import "./style.css";
+import { Store } from "../../store";
+import { logoutUser } from "../../store/actions/authActions";
 // import { List, ListItem } from "../../../../utils/List/List";
 // import M from "materialize-css/dist/js/materialize.min.js";
 
-function UserProfile() {
+function UserProfile(props) {
   const [characters, setCharacters] = useState([]);
-  const [user, setUser] = useState([]);
+  const [profile, setProfile] = useState([]);
+  const { state, dispatch } = useContext(Store);
+  const user = state.auth.user;
 
   useEffect(() => {
     loadCharacters();
@@ -30,7 +34,7 @@ function UserProfile() {
 
   function loadUser() {
     API.getUser()
-      .then((res) => setUser(res.data))
+      .then((res) => setProfile(res.data))
       .catch((err) => console.log(err));
   }
 
@@ -39,6 +43,14 @@ function UserProfile() {
       .then((res) => loadCharacters(res.data))
       .catch((err) => console.log(err));
   }
+
+  useEffect(() => {
+    if (!state.auth.isAuthenticated) props.history.push("/login");
+
+    API.getUser()
+      .then((res) => console.log({ res }))
+      .catch((err) => console.log({ err }));
+  }, [state, props]);
 
   return (
     <div className="container">

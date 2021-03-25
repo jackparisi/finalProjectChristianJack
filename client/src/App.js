@@ -22,59 +22,55 @@ import SpellSearch from "./components/pages/Search";
 import MonsterSearch from "./components/pages/Monsters";
 
 const App = () => {
-    const { dispatch } = useContext(Store);
+  const { dispatch } = useContext(Store);
 
-    useEffect(() => {
-        if (localStorage.jwtToken) {
-            const token = localStorage.jwtToken;
-            const decoded = jwt_decode(token);
-            const currentTime = Date.now() / 1000;
+  useEffect(() => {
+    if (localStorage.jwtToken) {
+      const token = localStorage.jwtToken;
+      const decoded = jwt_decode(token);
+      const currentTime = Date.now() / 1000;
 
-            setAuthToken(token);
+      setAuthToken(token);
 
-            dispatch(setCurrentUser(decoded));
+      dispatch(setCurrentUser(decoded));
 
-            if (decoded.exp < currentTime) {
-                dispatch(logoutUser());
-                window.location.href = "./login";
-            }
-        }
-    }, [dispatch]);
+      if (decoded.exp < currentTime) {
+        dispatch(logoutUser());
+        window.location.href = "./login";
+      }
+    }
+  }, [dispatch]);
 
-    // Initilize Materialize
-    useEffect(() => {
-        var elem = document.querySelector(".sidenav");
-        var instance = M.Sidenav.init(elem, {
-            edge: "left",
-            inDuration: 250,
-        });
-        // Initialize Materialize
-    }, []);
+  // Initilize Materialize
+  useEffect(() => {
+    var elem = document.querySelector(".sidenav");
+    var instance = M.Sidenav.init(elem, {
+      edge: "left",
+      inDuration: 250,
+    });
+    // Initialize Materialize
+  }, []);
 
-    return (
-        <Router>
-            <img src="./assets/wood.jpg" id="wood"></img>
-            <img src="./assets/coins.png" id="coins"></img>
-            <img src="./assets/dagger.png" id="dagger"></img>
-            <div className="App">
-                <Navbar />
-                <Route exact path="/" component={UserProfile} />
-                <Route exact path="/randomizer" component={Randomizer} />
-                {/* <Route exact path="/" component={Landing} /> */}
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/spellSearch" component={SpellSearch} />
-                <Route exact path="/monsterSearch" component={MonsterSearch} />
-                <Switch>
-                    <PrivateRoute
-                        exact
-                        path="/dashboard"
-                        component={Dashboard}
-                    />
-                </Switch>
-            </div>
-        </Router>
-    );
+  return (
+    <Router>
+      <img src="/assets/wood.jpg" id="wood"></img>
+      <img src="/assets/coins.png" id="coins"></img>
+      <img src="/assets/dagger.png" id="dagger"></img>
+      <div className="App">
+        <Navbar />
+        <Route exact path="/" component={UserProfile} />
+        <Route exact path="/randomizer" component={Randomizer} />
+        {/* <Route exact path="/" component={Landing} /> */}
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/spellSearch" component={SpellSearch} />
+        <Route exact path="/monsterSearch" component={MonsterSearch} />
+        <Switch>
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        </Switch>
+      </div>
+    </Router>
+  );
 };
 
 export default App;
