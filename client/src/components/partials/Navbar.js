@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Store } from "../../store";
 import { logoutUser } from "../../store/actions/authActions";
 import "./style.css";
+import logo from "../../assets/rpgenerator.png";
 
 const Navbar = (props) => {
     const { state, dispatch } = useContext(Store);
@@ -18,10 +19,7 @@ const Navbar = (props) => {
             <nav>
                 <div className="glass nav-wrapper">
                     <a href="/" className="brand-logo logo">
-                        <img
-                            src="./assets/rpgenerator.png"
-                            className="logo"
-                        ></img>
+                        <img src={logo} className="logo"></img>
                     </a>
                     <a
                         href="#"

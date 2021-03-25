@@ -9,6 +9,9 @@ import { Button, Card, Row, Col } from "react-materialize";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 import "./App.css";
+import wood from "./assets/wood.JPG";
+import coins from "./assets/coins.PNG";
+import dagger from "./assets/dagger.PNG";
 
 import Navbar from "./components/partials/Navbar";
 import UserProfile from "./components/pages/UserProfile";
@@ -51,26 +54,30 @@ const App = () => {
     // Initialize Materialize
   }, []);
 
-  return (
-    <Router>
-      <img src="/assets/wood.jpg" id="wood"></img>
-      <img src="/assets/coins.png" id="coins"></img>
-      <img src="/assets/dagger.png" id="dagger"></img>
-      <div className="App">
-        <Navbar />
-        <Route exact path="/" component={UserProfile} />
-        <Route exact path="/randomizer" component={Randomizer} />
-        {/* <Route exact path="/" component={Landing} /> */}
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/spellSearch" component={SpellSearch} />
-        <Route exact path="/monsterSearch" component={MonsterSearch} />
-        <Switch>
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        </Switch>
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <img src={wood} id="wood"></img>
+            <img src={coins} id="coins"></img>
+            <img src={dagger} id="dagger"></img>
+            <div className="App">
+                <Navbar />
+                <Route exact path="/" component={UserProfile} />
+                <Route exact path="/randomizer" component={Randomizer} />
+                {/* <Route exact path="/" component={Landing} /> */}
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/spellSearch" component={SpellSearch} />
+                <Route exact path="/monsterSearch" component={MonsterSearch} />
+                <Switch>
+                    <PrivateRoute
+                        exact
+                        path="/dashboard"
+                        component={Dashboard}
+                    />
+                </Switch>
+            </div>
+        </Router>
+    );
 };
 
 export default App;
