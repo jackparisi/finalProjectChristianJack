@@ -25,34 +25,34 @@ import SpellSearch from "./components/pages/Search";
 import MonsterSearch from "./components/pages/Monsters";
 
 const App = () => {
-    const { dispatch } = useContext(Store);
+  const { dispatch } = useContext(Store);
 
-    useEffect(() => {
-        if (localStorage.jwtToken) {
-            const token = localStorage.jwtToken;
-            const decoded = jwt_decode(token);
-            const currentTime = Date.now() / 1000;
+  useEffect(() => {
+    if (localStorage.jwtToken) {
+      const token = localStorage.jwtToken;
+      const decoded = jwt_decode(token);
+      const currentTime = Date.now() / 1000;
 
-            setAuthToken(token);
+      setAuthToken(token);
 
-            dispatch(setCurrentUser(decoded));
+      dispatch(setCurrentUser(decoded));
 
-            if (decoded.exp < currentTime) {
-                dispatch(logoutUser());
-                window.location.href = "./login";
-            }
-        }
-    }, [dispatch]);
+      if (decoded.exp < currentTime) {
+        dispatch(logoutUser());
+        window.location.href = "./login";
+      }
+    }
+  }, [dispatch]);
 
-    // Initilize Materialize
-    useEffect(() => {
-        var elem = document.querySelector(".sidenav");
-        var instance = M.Sidenav.init(elem, {
-            edge: "left",
-            inDuration: 250,
-        });
-        // Initialize Materialize
-    }, []);
+  // Initilize Materialize
+  useEffect(() => {
+    var elem = document.querySelector(".sidenav");
+    var instance = M.Sidenav.init(elem, {
+      edge: "left",
+      inDuration: 250,
+    });
+    // Initialize Materialize
+  }, []);
 
     return (
         <Router>
